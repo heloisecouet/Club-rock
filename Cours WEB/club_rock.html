@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>L'Assos Club Rock</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+       
+ 
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header { /*pour la bande rouge avec le titre en haut*/
+            background-color: #c33117;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            font-size: 2.5em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        .content {
+            padding: 30px;
+        }
+        h1 {  /*les titres rouges*/
+            color: #c0392b;
+            font-size: 2.5em;
+            text-align: center;
+        }
+        h2 { /* les titres bleus foncés*/
+            color: #34495e;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        h2:hover { /*les titres bleus, quand on a le curseur dessus deviennent orange*/
+            color: #f39c12;
+        }
+        .team-section {
+            background-color: #ecf0f1;
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 20px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .team-member { 
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+        .team-member img { /*pour les photos de la team avec un bord orange*/ 
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            margin-right: 20px;
+            border: 3px solid #f39c12;
+        }
+        .team-member:hover {
+            transform: scale(1.05);
+        }
+        .team-member b { /*noms des gens de la team*/
+            color: #2c3e50;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        .faq { /*pour la FAQ*/
+            background-color: #e74c3c;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        .faq:hover { 
+            background-color: #c0392b;
+        }
+        .faq-answer {  /*réposnes aux FAQ en noir et blanc */ 
+            display: none;
+            padding: 15px;
+            background-color: #151310;
+            color: white;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+        footer {     /*bas de la page bandeau noir et texte blanc*/
+            text-align: center;
+            background-color: #222;
+            color: white;
+            padding: 20px;
+            font-size: 1.1em;
+            margin-top: 50px;
+        }
+        footer p {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .dance-video,
+        .thank-you-video {  /*club rock c'est grâce à vous, vidéo */
+            padding: 30px;
+            margin-top: 40px;
+            background-color: #f4f4f9;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+
+        .dance-video h2,
+        .thank-you-video h2 { 
+            text-align: center;
+            color: #c0392b;
+            font-size: 2em;
+        }
+
+        .dance-video video,
+        .thank-you-video video {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+
+        .insta-recommended {  /*pour les recommandations insta*/
+        background-color: #ecf0f1;
+        padding: 20px;
+        box-shadow: 0px 5px 10px rgba(30, 11, 11, 0.1);
+        border-radius: 8px;
+        margin-top: 40px;
+        }
+
+        .insta-recommended h2 {
+            font-size: 1.8em;
+            color: #34495e;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .insta-recommended ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .insta-recommended li {
+            font-size: 1.2em;
+        }
+
+        .insta-recommended a {
+            text-decoration: none;
+            color: #c0392b;
+            transition: color 0.3s ease;
+        }
+
+        .insta-recommended a:hover {  /*les pages insta se colorent en orange quand le curseur est sur le titre*/
+            color: #f39c12;
+        }
+
+        video {
+            max-width: 90%;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .team-photos {
+    display: flex;
+    justify-content: center;
+    gap: 20px; 
+    margin-top: 20px;
+}
+
+.team-photos img {
+    width: 100px; 
+    height: 100px; 
+    object-fit: cover; 
+    border-radius: 8px; 
+}
+
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.lightbox img {
+    max-width: 95%;  
+    max-height: 95%;
+    object-fit: contain; 
+}
+
+.team-photos {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; 
+    margin-top: 20px;
+    width: 100%;
+}
+
+.team-photos img {
+    width: 30%; 
+    height: auto; 
+    object-fit: cover; 
+    cursor: pointer; 
+    border-radius: 8px; 
+}
+
+
+    </style>
+    <script>
+        function toggleFAQ(answerId) {
+            const answer = document.getElementById(answerId);
+            answer.style.display = (answer.style.display === "block") ? "none" : "block";
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    !! Le Club Rock !!
+</header>
+
+<div class="content">
+    <section class="team-section">
+        <h2>Rencontrez notre équipe !</h2>
+        <div class="team-member">
+            <img src="images/paul.png" alt="Paul">
+            <b>Paul</b> : Un prez dynamique qui vous envoie valser à l'autre bout de la salle !
+        </div>
+        <div class="team-member">
+            <img src="images/samuel.png" alt="Samuel">
+            <b>Samuel</b> : Un trez qui tchatch <s> (paps)</s> en soirée
+        </div>
+        <div class="team-member">
+            <img src="images/heloise.png" alt="Héloïse">
+            <b>Héloïse</b> : Une respo com qui vous motivera <s> (harcelera) </s> pour venir au club rock
+        </div>
+        <div class="team-member">
+            <img src="images/gabriel.png" alt="Gabriel">
+            <b>Gabriel</b> : Notre VP goûter – il sait comment régaler nos rockeurs préférés 
+        </div>
+        <div class="team-member">
+            <img src="images/aude.png" alt="Aude">
+            <b>Aude</b> : Notre sec gen : elle réserve notre salle de bal <s> (la FAO) </s> pour danser jusqu'au bout de la nuit
+        </div>
+        <div class="team-member">
+            <img src="images/pl.png" alt="Pierre-Louis">
+            <b>Pierre-Louis</b> : Un VP soutien à qui il ne faut mieux pas confier sa vie lors des portés ( POV : demandez à 24Porre )
+        </div>
+        <div class="team-member">
+            <img src="images/eleonore.png" alt="Eleonore">
+            <b>Eleonore</b> : Une VP soutien qui nous régale de ses meilleures chorés !
+        </div>
+    </section>
+
+    <section class="faq" onclick="toggleFAQ('location-answer')">
+        <h2>Mais Hélo, ça a l'air trop fun le club rock ! ( écrit par cette même Hélo mais promis y a pas d'égo) C'est où ?</h2>
+    </section>
+    <div class="faq-answer" id="location-answer">
+        <p><b>En FAO bien sûr !</b></p>
+    </div>
+
+    <section class="faq" onclick="toggleFAQ('time-answer')">
+        <h2>C'est quand ?</h2>
+    </section>
+    <div class="faq-answer" id="time-answer">
+        <p><b>Actuellement le lundi de 21h à 23h.</b></p>
+    </div>
+
+
+    <section class="faq" onclick="toggleFAQ('time-answer')">
+        <h2>On fait que danser ?</h2>
+    </section>
+    <div class="faq-answer" id="time-answer">
+        <p><b>Après le goûter ( merci Gabriel ), on part souvent en Camomines. RDV Camomines en PDV2 le lundi soir quand on est viré par les nos listeux !</b></p>
+    </div>
+
+    
+    <section class="faq" onclick="toggleFAQ('skills-answer')">
+    <h2>On a besoin d'être un expert du rock acrobatique ?</h2>
+</section>
+<div class="faq-answer" id="skills-answer">
+    <p><b>Pas du tout !</b> Avec notre équipe, vous apprendrez avec plaisir, quel que soit votre niveau.</p>
+ 
+    <video width="100%" controls>
+        <source src="videos/milanetvincent.mp4" type="video/mp4">
+    </video>
+
+
+</div>
+
+<div class="content">
+    <!-- Section vidéo "Vos rockeurs préférés dansent pour vous" -->
+    <section class="dance-video">
+        <h2>Vos rockeurs préférés dansent pour vous !</h2>
+        <video width="100%" controls>
+            <source src="videos/rock_a_4.mp4" type="video/mp4">
+            Votre navigateur ne prend pas en charge la vidéo.
+        </video>
+    </section>
+
+    <!-- Section vidéo "Le Club Rock c'est grâce à vous" -->
+    <section class="thank-you-video">
+        <h2>Le Club Rock c'est grâce à vous !</h2>
+        <p>Un grand merci à vous tous, car c'est grâce à vous que nous vivons cette expérience géniale ! Vous nous faites kiffer à vous joindre à nous !.</p>
+        <video width="100%" controls>
+            <source src="videos/rock_avec_vous.mp4" type="video/mp4">
+            Votre navigateur ne prend pas en charge la vidéo.
+        </video>
+    </section>
+
+<!-- Section photo "Le bureau rock qui vous adore !" -->
+<section class="thank-you-video">
+    <h2>Le bureau qui vous adore !</h2>
+    <p>Les absents ont toujours tort ( hein Pierre-Louis !)</p>
+    
+    <div class="team-photos">
+        <img src="images/bureau.png" alt="bureau" onclick="openLightbox(this)">
+        <img src="images/groupe.png" alt="groupe" onclick="openLightbox(this)">
+        <img src="images/bureau_rock.png" alt="bureau rock" onclick="openLightbox(this)">
+    </div>
+
+    <!-- Lightbox pour l'image agrandie -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Photo agrandie">
+    </div>
+</section>
+
+
+
+
+    <!-- Cadre des chaînes Instagram recommandées -->
+    <section class="insta-recommended">
+        <h2>Apprenez le rock avec ces chaînes Instagram !</h2>
+        <ul>
+            <li><a href="https://www.instagram.com/passes_de_rock" target="_blank">@passes_de_rock</a></li>
+            <li><a href="https://www.instagram.com/evolution_rock_" target="_blank">@evolution_rock_</a></li>
+            <li><a href="https://www.instagram.com/rock.is.on.fire" target="_blank">@rock.is.on.fire</a></li>
+        </ul>
+    </section>
+</div>
+
+
+<footer>
+    <p>Rejoignez-nous et découvrez l'univers du Club Rock !</p>
+</footer>
+
+</body>
+</html>
+
